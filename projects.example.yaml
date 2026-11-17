@@ -1,0 +1,11 @@
+# projects.local.yaml로 복사한 뒤 사용자에게 확인된 값만 입력한다.
+# 대상 경로는 절대 경로이며, 사용하지 않는 역할은 생략할 수 있다.
+# 이 파일과 로컬 등록에 토큰, 비밀번호 등 비밀값을 넣지 않는다.
+projects:
+  - name: Example Project
+    aliases:
+      - Example
+    targets:
+      specs: '<Specs 저장소 절대 경로>'
+      backend: '<Backend 저장소 절대 경로>'
+      frontend: '<Frontend 저장소 절대 경로>'
