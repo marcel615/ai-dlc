@@ -53,7 +53,7 @@
 ## Project 상태와 우선순위 (github_projects)
 
 - `project.statuses.backlog`에서 `project.statuses.ready`로 이동하기 전에 필요한 사용자 결정, 범위와 선행 조건이 충족됐는지 확인한다. Issue를 선정해 작업을 시작하면 `project.statuses.in_progress`로 변경한다. PR 생성 후 `project.statuses.in_review`, 사용자 merge로 작업 완료가 확인된 후 `project.statuses.done`을 확인한다.
-- GitHub 기본 자동화를 우선 사용하고 Main은 각 단계의 실제 Issue·PR과 Project 상태를 확인한다. 자동화가 해당 Issue를 갱신하지 않으면 확인된 사실에 맞춰 Main이 갱신한다. 실패, 조회 불가 또는 불일치의 원인을 확인할 수 없으면 중단하고 보고한다. 실제 자동 전환 동작은 통합 검증 전까지 확인된 것으로 간주하지 않는다. 닫힌 Issue라고 모두 완료된 것은 아니므로 종료 사유와 merge를 확인한다.
+- GitHub 기본 자동화를 우선 사용하고 Main은 각 단계의 실제 Issue·PR과 Project 상태를 확인한다. 자동화가 해당 Issue를 갱신하지 않으면 확인된 사실에 맞춰 Main이 갱신한다. 실패, 조회 불가 또는 불일치의 원인을 확인할 수 없으면 중단하고 보고한다. 실제 자동 전환 동작은 확인된 근거 없이 성공으로 간주하지 않는다. 닫힌 Issue라고 모두 완료된 것은 아니므로 종료 사유와 merge를 확인한다.
 - 우선순위의 기준은 Issue의 `labels.priority.high`, `labels.priority.medium`, `labels.priority.low` 라벨이며 Project `project.fields.priority`는 각각 `project.priority_values.high`, `project.priority_values.medium`, `project.priority_values.low`로 이를 반영한다. 복수 라벨·해석 불가 또는 라벨과 필드의 불일치는 추측해 덮어쓰지 않고 확인한다. 라벨이 없으면 Project 우선순위를 임의로 지정하지 않는다. `project.fields.target_date`는 사용자가 지정한 날짜만 기록한다.
 - 현재는 동시 실행을 하지 않는 운영을 전제로 하며, 이 절차는 동시 실행을 막거나 원자적으로 선점하지 않는다.
 
@@ -75,9 +75,9 @@
 2. `github_projects`에서 Main은 자동 선정과 직접 지정 모두에서, `labels.decision`이 이미 해제됐거나 다른 세션에서 해제된 경우에도 관련 Issue 본문과 사용자 코멘트를 확인한다. 확인된 각 결정과 코멘트 링크·작성자를 Architect에게 전달한다. Architect는 Issue와 템플릿, 전달된 결정을 확인하고 설계와 `current-task.md` 초안에 결정 및 출처를 반영한다. 요구사항이 부족하면 Main을 통해 사용자에게 묻는다. Issue 선정은 위 절차를 따르고, 후속 Issue 생성과 사용자 결정 반영은 위 절차를 따른다. 그 외 Issue 생성·수정은 사용자 승인 후 진행한다.
    `jira`에서는 선정된 Task의 본문·사용자 결정과 출처를 확인해 Architect에게 전달하고, 추가 결정이 필요하면 사용자에게 묻는다.
 3. Architect는 설계, 공식 계약 변경 필요성과 기존 계약을 지키는 대안, `current-task.md` 초안과 검증 계획을 제시한다. Main이 설계 게이트를 통과시키면 Architect가 승인 범위의 설계를 docs/current-task.md에 반영한다. 공통 명세는 설정된 공통 명세의 기본 브랜치를 기준으로 변경 필요성을 판단·보고하고 원문 대신 Issue 관련 요약과 원본 링크를 둔다. 필요한 계약 변경은 위 공통 명세 절차에 따라 보류·보고한다.
-4. Builder는 구현·브랜치 계획을 제시한다. Main은 설정된 대상 기준 브랜치의 최신 상태와 전환 가능 여부를 확인하고 feature 브랜치를 만든다. 기존 변경을 보존하고 충돌 또는 불확실성이 있으면 중단한다.
+4. Builder는 구현·브랜치 계획을 제시한다. Main은 선택한 저장소의 기준 브랜치 최신 상태와 전환 가능 여부를 확인하고 `development.branch_pattern`에 따라 작업 브랜치를 만든다. `development.protected_branches`에 지정된 브랜치에서는 직접 구현하지 않는다. 필요한 브랜치 설정이 없거나 불명확하면 추측하지 않고 중단한다. 기존 변경을 보존하고 충돌 또는 불확실성이 있으면 중단한다.
 5. 새 Issue 시작 시 이전 Issue의 devlog 반영을 확인한 뒤 `docs/current-work-log.md`를 초기화한다. 같은 Issue 재개 시 초기화하지 않는다. Builder는 주요 결정, 문제·해결, 예상과 다른 동작과 중요한 검증 결과만 기록한다.
-6. Builder는 Main이 승인한 범위에서 구현하고 필요한 자동 테스트와 전체 테스트를 실행한다. 변경 파일, 실행 명령·결과와 미검증 사항을 전달한다. Main은 구현 게이트 통과 후 commit·push하고 설정된 작업 브랜치 → 선택된 대상 기준 브랜치 PR을 생성한다. `jira`에서는 검토 가능한 PR의 URL을 Task에 기록·확인한 뒤 `jira.statuses.in_review`로 전환하고 재조회한다.
+6. Builder는 Main이 승인한 범위에서 구현하고 필요한 자동 테스트와 전체 테스트를 실행한다. 변경 파일, 실행 명령·결과와 미검증 사항을 전달한다. Main은 구현 게이트 통과 후 commit·push하고 `development.branch_prefix`로 시작하는 작업 브랜치에서 선택한 저장소의 기준 브랜치로 PR을 생성한다. `jira`에서는 검토 가능한 PR의 URL을 Task에 기록·확인한 뒤 `jira.statuses.in_review`로 전환하고 재조회한다.
 7. Architect는 변경과 `선택된 역할의 리뷰 기준`를 기준으로 필수 수정·선택 개선·통과 항목과 근거를 반환한다. Main은 리뷰 내용을 확인하고 PR에 일반 리뷰로 등록한다. AI 리뷰는 팀의 필수 사람 리뷰·승인을 대신하지 않는다.
 8. Builder는 필수 수정 사항을 반영하고 관련 검증을 다시 실행한다. 각 수정·재검증을 한 회로 하여 테스트·CI·필수 리뷰 문제에 대한 반복은 최대 2회다. 같은 문제가 남거나 범위·권한 변경이 필요하면 중단해 보고한다. 리뷰 수정 중의 주요 결정과 검증 결과도 기록한다.
 9. `github_projects`에서 Main은 기술 후속 작업이 독립적으로 추적할 만큼 필요한 경우에만 위 기준에 따라 Issue를 생성하고 우선순위·확인된 선행 관계를 설정한다. 해당 작업이 없으면 Issue를 생성하지 않는다. 선택적 기능 아이디어는 보고하고 별도 후보 발굴 요청에서 처리한다. `jira`에서는 필요한 후속 작업과 후보를 사용자에게 보고한다. Reporter는 Issue, PR, 임시 기록과 검증 결과를 근거로 devlog를 작성한다. Main은 확인 후 월별 파일에 append-only로 반영해 commit·push한다. 변경 후 관련 리뷰와 검증을 확인한다.

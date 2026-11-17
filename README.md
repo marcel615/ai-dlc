@@ -2,10 +2,6 @@
 
 프로젝트와 요청에 따라 Orchestrator, Backend, Frontend 작업을 선택하는 공통 운영 루트다. 프로젝트별 설정과 명세, 소스, 작업 기록과 상태는 각 대상 저장소에 남는다. 공통 저장소는 기존 AI-DLC 저장소의 파일이나 Skill을 실행 중에 불러오지 않는다.
 
-## 현재 단계
-
-프로젝트 등록·역할 선택과 공통 Skill, 워크플로, 리뷰 기준, Agent, 설정 예시 및 템플릿을 통합했다. 실제 프로젝트의 `ai-dlc.yaml`은 공통 저장소 통합 후 전환 단계에서 필요한 부분만 갱신한다. 전환과 최종 검증은 아직 진행하지 않았다.
-
 ## 프로젝트 등록과 요청
 
 1. `projects.example.yaml`을 루트의 `projects.local.yaml`로 복사한다.
@@ -28,8 +24,6 @@ ai-dlc/
 ├── examples/                 # 역할별 ai-dlc.yaml 예시
 └── templates/                # 역할별·공통 초기 양식
 ```
-
-전환 시 실제 대상 설정을 역할별 예시 및 실행 규칙과 대조해 필요한 값만 갱신한다. 기존 `backlog.refinement_skill`은 `backlog-refinement`로 전환하고, Specs의 `orchestrator.repository`와 `review.state_file`의 실제 의미를 유지한다. 최종 검증은 설정 전환 이후 사용자가 직접 진행한다. 기존 프로젝트의 설정·계약·기록·상태를 공통 저장소로 옮기거나 초기화하지 않는다.
 
 ## 이관 기준 이력
 
