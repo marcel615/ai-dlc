@@ -4,7 +4,10 @@
 
 ## 설정과 실행 전 확인
 
-선택 서비스의 `jira.site_url`, `project_key`, `issue_types.candidate/implementation/epic/contract`, `statuses.candidate/backlog/ready/in_progress/in_review/done`, 각 필요한 구현 역할의 `role_labels`, `approval`, `priority_order`를 읽는다. `approval`은 `user_transition_to_backlog`만 지원한다. 설정값은 실제 Jira 사이트·프로젝트·유형별 상태·우선순위 및 레이블 필드의 사용 가능 여부와 대조한다. 역할 레이블은 값과 작업 편집 권한을 확인하고 실제 작업에 설정한다. 기존 레이블 목록에 없다는 이유만으로 관리자에게 별도 사전 생성을 요구하지 않는다. 같은 상태의 중복 이름, 누락·잘못된 값, 조회·인증 실패, 필수 권한 또는 관계 지원 미확인은 해당 작업을 보류하고 보고한다. Jira 실패를 GitHub Projects로 대체하지 않는다.
+선택 서비스의 Jira 사이트·프로젝트를 확인하고, 실행할 작업과 단계에 필요한 설정만 읽어 실제 Jira 사이트·프로젝트·유형별 상태·우선순위 및 레이블 필드의 사용 가능 여부와 대조한다. 같은 상태의 중복 이름, 작업에 필요한 설정의 누락·잘못된 값, 조회·인증 실패, 필수 권한 또는 필요한 관계 지원 미확인은 해당 작업을 보류하고 보고한다. Jira 실패를 GitHub Projects로 대체하지 않는다.
+
+- Backend·Frontend 개발은 아래 개발 Task 절차의 구현 유형·상태, 선택한 역할 라벨 및 그 단계에 필요한 설정을 확인한다. 상대 역할 라벨이나 후보 관리 설정은 요구하지 않는다.
+- Orchestrator는 후보 등록·정제 등 요청된 작업에 필요한 `issue_types.candidate`, `statuses.candidate`, `statuses.backlog`, `approval`, `priority_order`와 구현 역할의 `role_labels` 등을 확인한다. 후보 승인 방식 `approval`은 `user_transition_to_backlog`만 지원한다. Epic 전환 또는 계약 작업에 필요한 `issue_types.epic`이나 `issue_types.contract`는 해당 작업이 필요한 경우 확인한다. 역할 레이블을 설정할 때 값과 작업 편집 권한을 확인한다. 기존 레이블 목록에 없다는 이유만으로 관리자에게 별도 사전 생성을 요구하지 않는다.
 
 연결된 Atlassian 도구를 우선 사용하고 목록은 마지막 페이지까지 확인한다. Jira 작업의 쓰기 전에는 해당 작업에 필요한 조회·생성·수정 권한과 필수 필드·상태 전환 조건을 확인한다. Epic이 필요한 경우에만 후보 유형 전환과 Task 상위 관계의 지원·권한·필드 및 상태 매핑을 확인한다. 상태나 유형이 존재한다는 사실은 전환 가능성의 증거가 아니다. GitHub Project 편집 권한·Draft·공식 Sub-issue 확인은 요구하지 않는다. 설정 변경이나 Jira 관리자 권한이 필요하면 보고하고 임의로 설정하지 않는다. 토큰 등 비밀을 기록하지 않는다.
 
@@ -45,7 +48,7 @@ Epic 전환 전 같은 프로젝트·같은 키 유지, 현재 상태와 대상 
 
 ## 설정과 선정
 
-활성 서비스의 `jira.site_url`, `project_key`, `issue_types.candidate`, `issue_types.implementation`, `statuses.candidate`, `statuses.backlog`, `statuses.ready`, `statuses.in_progress`, `statuses.in_review`, `statuses.done`, `approval`, `priority_order`와 선택한 구현 역할 저장소 및 기준 브랜치를 작업에 필요한 범위에서 읽고 실제 Jira 프로젝트·유형·상태·라벨·접근 권한과 대조한다. 역할 라벨은 Backend 작업이면 `jira.role_labels.backend`, Frontend 작업이면 `jira.role_labels.frontend`만 확인하며 상대 역할의 라벨을 필수로 요구하지 않는다. `approval`은 `user_transition_to_backlog`를 사용한다. 설정은 Orchestrator와 같은 구조를 사용한다. 상태 이름이 중복되거나 값·권한·전환을 확인할 수 없으면 보류한다. Jira 연결 도구를 우선 사용하고 목록의 모든 페이지를 확인한다. 상태 존재만으로 전환 가능하다고 가정하지 않는다. 비밀값은 기록하지 않는다.
+활성 서비스의 `jira.site_url`, `project_key`, `issue_types.implementation`, `statuses.ready`, `statuses.in_progress`, `statuses.in_review`, `statuses.done`, 선택한 구현 역할의 저장소와 기준 브랜치를 해당 작업·단계에 필요한 범위에서 확인하고 실제 Jira 프로젝트·유형·상태·라벨·접근 권한과 대조한다. 자동 선정 시 `priority_order`도 확인한다. 역할 라벨은 Backend 작업이면 `jira.role_labels.backend`, Frontend 작업이면 `jira.role_labels.frontend`만 확인하며 상대 역할의 라벨을 필수로 요구하지 않는다. `issue_types.candidate`, `statuses.candidate`, `statuses.backlog`, `approval`이 없어도 나머지 착수 조건을 충족하는 `ready` 상태의 구현 Task를 진행할 수 있다. 상태 이름이 중복되거나 작업에 필요한 값·권한·전환을 확인할 수 없으면 보류한다. Jira 연결 도구를 우선 사용하고 목록의 모든 페이지를 확인한다. 상태 존재만으로 전환 가능하다고 가정하지 않는다. 비밀값은 기록하지 않는다.
 
 새 작업을 선정할 때는 설정된 프로젝트에서 유형이 `jira.issue_types.implementation`인 Task 중 상태가 `jira.statuses.ready`이고 선택한 역할에 해당하는 `jira.role_labels.backend` 또는 `jira.role_labels.frontend` 라벨이 있는 작업만 선정한다. 새로 직접 지정한 작업도 같은 조건을 확인한다. Epic, 후보, 다른 역할이나 다른 프로젝트는 제외하며 조건을 확인할 수 없는 작업은 보류한다. 사용자가 직접 `ready`로 옮기며 개발 Skill은 이 전환을 수행하지 않는다. 기존 작업의 재개에는 `ready`를 요구하지 않고 아래 재개 절차를 따른다.
 
