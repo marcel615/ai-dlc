@@ -10,6 +10,12 @@
 
 로컬 등록은 Git에서 제외된다. 이름·역할·대상 경로와 원격을 확인하는 방법 및 중단 조건은 [AGENTS.md](AGENTS.md)를 따른다. 공식 명세가 필요한 작업에서는 실제 설정된 원본을 확인해야 한다.
 
+## 새 프로젝트 설정
+
+새 프로젝트에서는 대상 역할에 맞는 `templates/orchestrator/`, `templates/backend/`, `templates/frontend/` 폴더의 `ai-dlc.example.yaml`을 대상 저장소 루트에 `ai-dlc.yaml`로 직접 복사하고 실제 환경에 맞게 수정한다. 역할별 설정 예시는 각각 독립적이며 비밀값을 넣지 않는다.
+
+같은 역할 폴더의 문서와 Issue·PR 양식은 필요한 경우 참고한다. 대상 저장소의 기존 설정·양식·작업 기록을 우선하며 자동으로 복사하거나 덮어쓰지 않는다. Backend와 Frontend의 작업 기록 초기 양식은 각각 해당 폴더의 `docs/current-work-log.md`에 있다.
+
 ## 저장소 구조
 
 ```text
@@ -21,8 +27,10 @@ ai-dlc/
 ├── docs/workflows/           # 공통·Orchestrator 절차
 ├── docs/providers/           # Jira·GitHub Projects 절차
 ├── docs/review/              # 공통·역할별 리뷰 기준
-├── examples/                 # 역할별 ai-dlc.yaml 예시
-└── templates/                # 역할별·공통 초기 양식
+└── templates/
+    ├── orchestrator/         # Orchestrator 설정 예시와 초기 양식
+    ├── backend/              # Backend 설정 예시와 초기 양식
+    └── frontend/             # Frontend 설정 예시와 초기 양식
 ```
 
 ## 이관 기준 이력
