@@ -7,7 +7,7 @@ description: 백로그 정제 요청에서 선택한 작업 추적 도구의 승
 
 공통 루트의 `AGENTS.md`, `docs/workflows/orchestrator.md`, 선택된 `docs/providers/jira.md` 또는 `docs/providers/github-projects.md`와 `docs/review/orchestrator.md`를 읽는다. 후보 발굴·백로그 정제·기존 작업 상세화의 설정 대상은 `AGENTS.md`의 Specs 우선 및 단일 구현 대상 규칙을 따른다. 필요한 공식 원본이 없거나 확인되지 않으면 추측하거나 대체하지 않고 해당 범위를 보류한다.
 
-`jira` provider는 공통 목표·원본·중복 검토와 `docs/providers/jira.md`의 승인 확인·정제·관계 절차를 따른다. 아래 Draft 전환·GitHub 공식 Sub-issue·Project 초기 반영 지시는 `github_projects`에만 적용한다. Jira 구현 Task의 착수 가능 전환은 사용자가 직접 한다.
+`jira` provider는 공통 목표·원본·중복 검토와 `docs/providers/jira.md`의 승인 확인·정제·관계 절차를 따른다. `jira`에서 선택 서비스의 Confluence가 활성화되어 있으면 `docs/providers/jira.md`에 따라 기능 기획 페이지의 필요성을 판단하고 생성·재사용하며 Jira와 일반 웹 링크를 양방향으로 확인한다. 미설정·비활성이면 Jira만 처리하고 활성 설정이나 접근에 문제가 있으면 Confluence 부분을 보류해 보고한다. 아래 Draft 전환·GitHub 공식 Sub-issue·Project 초기 반영 지시는 `github_projects`에만 적용한다. Jira 구현 Task의 착수 가능 전환은 사용자가 직접 한다.
 
 공통 운영 루트의 `AGENTS.md`에 따라 프로젝트를 식별하고 대상 루트의 `ai-dlc.yaml`을 확인한다. 절차는 공통 루트의 `docs/workflows/orchestrator.md`를 따른다. 프로젝트 설정과 기록은 대상 루트 기준이다. 서비스·저장소 역할·선택 provider의 상태·라벨은 설정으로 해석하며 특정 서비스를 하드코딩하지 않는다. 정제 요청은 승인 후보 선정과 필요한 구현 작업 정제·연결을 포함한다. 정상 범위의 작업에 추가 실행 승인을 반복 요청하지 않는다. 사용자가 분석·계획만 요청하거나 범위를 제한하면 그 지시를 따른다.
 

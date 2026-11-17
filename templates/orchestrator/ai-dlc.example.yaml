@@ -61,6 +61,13 @@ services:
     work_tracking:
       provider: github_projects
 
+    # 선택 사항: Jira 백로그 정제의 기능 기획 페이지. 미설정/false면 Jira만 사용한다.
+    # confluence:
+    #   enabled: true
+    #   site_url: https://example.atlassian.net/wiki
+    #   space_key: EXAMPLE
+    #   parent_page_id: '123456' # 실제 상위 페이지 ID 확인
+
     # 공통 백로그 및 GitHub Parent/Sub-issue 관리
     backlog:
       # 기능 후보 발굴 Skill

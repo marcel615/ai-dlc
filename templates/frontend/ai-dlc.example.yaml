@@ -49,6 +49,13 @@ services:
     work_tracking:
       provider: github_projects
 
+    # 선택 사항: Jira 백로그 정제의 기능 기획 페이지. 미설정/false면 Jira만 사용한다.
+    # confluence:
+    #   enabled: true
+    #   site_url: https://example.atlassian.net/wiki
+    #   space_key: EXAMPLE
+    #   parent_page_id: '123456' # 실제 상위 페이지 ID 확인
+
     # Jira 사용 시 provider를 jira로 바꾸고 실제 값 확인 후 주석 해제한다.
     # project와 jira는 독립된 설정이다. 후보·Epic 관리는 Orchestrator에서 수행한다.
     # jira:
