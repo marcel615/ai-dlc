@@ -15,11 +15,11 @@
 | 프론트엔드 작업 시작·재개·마무리 | Frontend / `frontend-issue-driven-dev` | `targets.frontend` |
 | 기능 아이디어 제안 | Orchestrator / `feature-discovery` | 아래 기준으로 선택한 대상의 설정과 필요한 활성 영역 |
 | 백로그 정제 | Orchestrator / `backlog-refinement` | 아래 기준으로 선택한 대상의 설정과 필요한 활성 영역 |
-| 기존 작업 상세화 | Orchestrator / `issue-refinement` | `targets.specs`의 설정과 필요한 활성 영역 |
+| 기존 작업 상세화 | Orchestrator / `issue-refinement` | 아래 기준으로 선택한 대상의 설정과 필요한 활성 영역 |
 | 공식 계약 변경 관리 | Orchestrator / `contract-management` | 설정된 공식 명세 원본 |
 | 지정 PR·계약의 변경 영향 검토 | Orchestrator / `change-impact-review` | 설정된 Specs 및 필요한 관련 저장소 |
 
-후보 발굴과 백로그 정제에서는 `targets.specs`가 등록돼 있으면 Specs 루트의 `ai-dlc.yaml`을 사용한다. Specs가 등록되지 않고 `targets.backend` 또는 `targets.frontend` 중 하나만 등록돼 있으면 그 대상 루트의 `ai-dlc.yaml`을 사용한다. Specs 없이 두 구현 대상이 모두 등록돼 있거나 설정 대상이 그 밖의 이유로 모호하면 추측하지 말고 사용자에게 확인한다. 선택한 설정을 읽거나 확인할 수 없을 때 다른 대상의 설정으로 임의 대체하지 않는다. 작업에 공식 명세가 필요하면 선택한 설정에서 지정한 공식 원본을 확인한다.
+후보 발굴·백로그 정제·기존 작업 상세화에서는 `targets.specs`가 등록돼 있으면 Specs 루트의 `ai-dlc.yaml`을 사용한다. Specs가 등록되지 않고 `targets.backend` 또는 `targets.frontend` 중 하나만 등록돼 있으면 그 대상 루트의 `ai-dlc.yaml`을 사용한다. Specs 없이 두 구현 대상이 모두 등록돼 있거나 설정 대상이 그 밖의 이유로 모호하면 추측하지 말고 사용자에게 확인한다. 선택한 설정을 읽거나 확인할 수 없을 때 다른 대상의 설정으로 임의 대체하지 않는다. 작업에 공식 명세가 필요하면 선택한 설정에서 지정한 공식 원본을 확인한다.
 
 각 Skill은 독립 실행한다. 후보 제안만으로 승인·정제·개발을 시작하지 않고, 영향 검토 요청만으로 후속 작업을 등록하거나 개발을 시작하지 않는다. 사용자 요청이 특정 영역이나 작업을 제한하면 그 범위를 따른다.
 
