@@ -4,7 +4,7 @@
 
 ## 현재 단계
 
-프로젝트 등록과 역할 선택 규칙을 구성했다. Skill, 공통 워크플로, 리뷰 기준, Agent, 역할별 설정 예시와 템플릿은 다음 통합 단계에서 이관할 예정이다. 해당 파일이 준비되기 전에는 선택된 작업을 실행하지 않는다. 실제 프로젝트의 `ai-dlc.yaml`은 공통 저장소 통합 후 전환 단계에서 필요한 부분만 갱신한다.
+프로젝트 등록·역할 선택과 공통 Skill, 워크플로, 리뷰 기준, Agent, 설정 예시 및 템플릿을 통합했다. 실제 프로젝트의 `ai-dlc.yaml`은 공통 저장소 통합 후 전환 단계에서 필요한 부분만 갱신한다. 전환과 최종 검증은 아직 진행하지 않았다.
 
 ## 프로젝트 등록과 요청
 
@@ -14,22 +14,22 @@
 
 로컬 등록은 Git에서 제외된다. 이름·역할·대상 경로와 원격을 확인하는 방법 및 중단 조건은 [AGENTS.md](AGENTS.md)를 따른다. 공식 명세가 필요한 작업에서는 실제 설정된 원본을 확인해야 한다.
 
-## 예정 구조
+## 저장소 구조
 
 ```text
 ai-dlc/
 ├── AGENTS.md                 # 프로젝트·역할 선택과 공통 권한
 ├── projects.example.yaml     # 로컬 등록 양식
-├── .agents/skills/           # 역할별 Skill (통합 예정)
-├── .codex/agents/            # 공통 개발 Agent (통합 예정)
-├── docs/workflows/           # 공통·Orchestrator 절차 (통합 예정)
-├── docs/providers/           # Jira·GitHub Projects 절차 (통합 예정)
-├── docs/review/              # 공통·역할별 리뷰 기준 (통합 예정)
-├── examples/                 # 역할별 ai-dlc.yaml 예시 (통합 예정)
-└── templates/                # 역할별·공통 초기 양식 (통합 예정)
+├── .agents/skills/           # 역할별 Skill
+├── .codex/agents/            # 공통 개발 Agent
+├── docs/workflows/           # 공통·Orchestrator 절차
+├── docs/providers/           # Jira·GitHub Projects 절차
+├── docs/review/              # 공통·역할별 리뷰 기준
+├── examples/                 # 역할별 ai-dlc.yaml 예시
+└── templates/                # 역할별·공통 초기 양식
 ```
 
-최종 전환과 검증은 공통 저장소 통합 이후 진행한다. 기존 프로젝트의 설정·계약·기록·상태를 공통 저장소로 옮기거나 초기화하지 않는다.
+전환 시 실제 대상 설정을 역할별 예시 및 실행 규칙과 대조해 필요한 값만 갱신한다. 기존 `backlog.refinement_skill`은 `backlog-refinement`로 전환하고, Specs의 `orchestrator.repository`와 `review.state_file`의 실제 의미를 유지한다. 최종 검증은 설정 전환 이후 사용자가 직접 진행한다. 기존 프로젝트의 설정·계약·기록·상태를 공통 저장소로 옮기거나 초기화하지 않는다.
 
 ## 이관 기준 이력
 
