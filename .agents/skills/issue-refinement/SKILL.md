@@ -7,7 +7,7 @@ description: 정식 Parent와 Sub-issue의 최초 상세화 또는 계약 변경
 
 공통 루트의 `AGENTS.md`, `docs/workflows/orchestrator.md`, 선택된 `docs/providers/jira.md` 또는 `docs/providers/github-projects.md`와 `docs/review/orchestrator.md`를 읽는다. 후보 발굴·백로그 정제·기존 작업 상세화의 설정 대상은 `AGENTS.md`의 Specs 우선 및 단일 구현 대상 규칙을 따른다. 필요한 공식 원본이 없거나 확인되지 않으면 추측하거나 대체하지 않고 해당 범위를 보류한다.
 
-`jira` provider는 `docs/providers/jira.md`의 관계·상세화·계약 작업 절차를 따른다. 공식 계약 변경이 선행되는 구현 Task에는 해당 계약 변경 Task와 차단 관계를 확인·연결하고, Confluence가 활성화된 경우 기존 기획 페이지를 확인해 논의를 기록하며 필요한 경우 생성·연결한다. 대상 식별·중복 방지·권한·부분 실패 처리는 해당 Jira 절차를 따른다. 아래 GitHub 공식 Sub-issue·Project 등록 및 상태 조정은 `github_projects`에만 적용한다. Jira에서는 결과와 미결 조건을 보고하고 구현 Task의 착수 가능 전환을 사용자에게 남긴다.
+`jira` provider는 `docs/providers/jira.md`의 관계·상세화·계약 작업 절차를 따른다. 공식 계약 변경이 선행되는 구현 Task에는 해당 계약 변경 Task와 차단 관계를 확인·연결하고, Confluence가 활성화된 경우 기존 기획 페이지를 확인해 논의를 기록하며 필요한 경우 생성·연결한다. 협의·결정 기록은 기존 기획 내용 아래에 구분선으로 분리하고, 이미 같은 기록 영역이 있으면 재사용한다. 대상 식별·중복 방지·권한·부분 실패 처리는 해당 Jira 절차를 따른다. 아래 GitHub 공식 Sub-issue·Project 등록 및 상태 조정은 `github_projects`에만 적용한다. Jira에서는 결과와 미결 조건을 보고하고 구현 Task의 착수 가능 전환을 사용자에게 남긴다.
 
 공통 루트 `AGENTS.md`, `docs/workflows/orchestrator.md`, `docs/review/orchestrator.md`와 대상 로컬 지시를 따른다. 선행 Skill 실행은 필요하지 않다. `github_projects`에서는 지정 Issue의 실제 Parent와 공식 Sub-issue 관계를 조회하고 관계가 있으면 양방향으로 확인한다. 단일 저장소 Draft에서 직접 전환된 독립 Issue는 Parent나 자식을 요구하지 않는다. `jira`에서는 지정 작업과 실제 필요한 Jira 관계를 확인한다. 후보 자체가 단일 구현 Task인 경우 Epic이나 자식 관계를 요구하지 않는다. 자식이 지정되면 해당 작업과 상위·영향받는 형제만 다루고, 상위가 지정되면 필요한 자식을 검토한다. 다른 상위로 재배치하지 않는다. 필요한 대상이나 관계를 확인할 수 없으면 해당 범위를 보류한다.
 

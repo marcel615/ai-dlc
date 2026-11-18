@@ -67,6 +67,7 @@ services:
     #   site_url: https://example.atlassian.net/wiki
     #   space_key: EXAMPLE
     #   parent_page_id: '123456' # 실제 상위 페이지 ID 확인
+    #   contract_parent_page_id: '234567' # 선택: 계약 변경 논의의 상위 페이지 ID
 
     # 공통 백로그 및 GitHub Parent/Sub-issue 관리
     backlog:
