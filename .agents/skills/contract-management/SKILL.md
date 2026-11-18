@@ -13,11 +13,18 @@ description: 사용자가 직접 요청한 공식 요구사항·API·인증·ERD
 
 ## 원본·Issue와 영향 확인
 
-요청의 목적·변경 범위와 관련 Issue·공식 관계·기존 결정을 확인하고, `requirements`와 관련 `contracts`의 설정된 역할·기본 브랜치 원본을 실제 조회해 URL·commit SHA를 기록한다. 기존 구현은 소비자 영향 근거이며 공식 원본 대체가 아니다. 명세 저장소 및 Project의 관련 열린·닫힌 Issue와 PR을 조회하고 workflow의 계약 변경 Issue 절차에 따라 기존 Issue를 재사용하거나 생성하고 Project에 등록·확인한다. 완료·종료된 과거 작업은 내용과 현재 반영 여부를 확인해 중복 여부를 판단하며 무조건 재사용하거나 재생성하지 않는다.
+요청의 목적·변경 범위와 관련 작업·공식 관계·기존 결정을 확인하고, `requirements`와 관련 `contracts`의 설정된 역할·기본 브랜치 원본을 실제 조회해 URL·commit SHA를 기록한다. 기존 구현은 소비자 영향 근거이며 공식 원본 대체가 아니다. 작업 조회·등록은 선택 provider에 따라 구분한다.
+
+- `jira`: 설정된 Jira 프로젝트의 기존 계약 변경 Task를 먼저 조회해 같은 변경을 다루는 작업을 재사용한다. 해당 작업이 없음을 확인한 경우에만 `jira.issue_types.contract`로 생성하고 관련 작업과 연결한다. GitHub Issue 생성과 GitHub Project 등록은 수행하지 않는다.
+- `github_projects`: 명세 저장소 및 Project의 관련 열린·닫힌 Issue와 PR을 조회하고 workflow의 계약 변경 Issue 절차에 따라 기존 Issue를 재사용하거나 생성하고 Project에 등록·확인한다.
+
+완료·종료된 과거 작업은 내용과 현재 반영 여부를 확인해 중복 여부를 판단하며 무조건 재사용하거나 재생성하지 않는다. 조회 실패를 작업 부재로 취급하지 않는다. 두 provider 모두 영향 확인에 필요한 GitHub 구현·Issue·PR 조회와 승인된 Specs 명세 PR 생성을 유지한다.
 
 요구사항·API·인증·ERD·UI 간 일관성과 필요한 Backend·Frontend 소비자별 영향을 분석한다. 호환성, 기존 데이터·마이그레이션, 보안, 오류·경계 조건, 배포 순서·전환 기간·복구를 관련 범위에서 검토한다. 영향 없음에는 근거를 남기고 미연결·조회 실패는 보류로 구분한다. 관련 작업과 계약 변경 작업을 상호 참조로 연결하되 선택 provider의 기존 관계를 유지한다. `github_projects`에서는 계약 Issue를 임의로 공식 Sub-issue로 추가하거나 URL을 공식 관계로 주장하지 않는다. 각 관련 작업에 영향·이유·재상세화 필요/불필요/판정 보류와 기준 SHA를 기록한다. 사용자 요청 범위 밖 수정은 하지 않는다.
 
 계약 변경 방향과 구현 영향이 충분히 명확해지면 명세 PR 전에 필요한 구현 작업을 준비한다. 기존 열린 작업의 목적·범위를 확인해 맞는 작업을 재사용하고, 꼭 필요하지만 빠진 작업만 선택 provider에 생성·연결한다. 변경안·사용자 결정과 아직 공식이 아닌 상태, 영향·선행 조건·기존 공식 기준 SHA를 구분해 기록한다. 생성은 명세 수정 승인이나 개발 착수가 아니다. 실제 Merge 후 공식 SHA를 확인해 영향 작업의 기준과 재상세화 필요성을 갱신한다. 대상·중복·필요성·관계가 불명확하면 해당 범위를 보류한다.
+
+`jira`의 신규 구현 Task에는 `docs/providers/jira.md`의 구현 유형·역할 라벨·초기 백로그 상태·중복 확인 규칙을 적용한다. `jira.issue_types.implementation`으로 생성하고 Backend에는 `jira.role_labels.backend`, Frontend에는 `jira.role_labels.frontend`를 붙이며 `jira.statuses.backlog`에 둔 뒤 실제 결과를 확인한다. 기존 Task를 재사용할 때는 진행 상태를 되돌리지 않고 `jira.statuses.ready` 전환은 사용자에게 남긴다. 이 규칙은 후보 승인 절차나 `backlog-refinement` 실행을 요구하지 않는다.
 
 ## 협의·승인과 명세 PR
 
