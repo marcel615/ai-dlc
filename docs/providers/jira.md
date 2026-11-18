@@ -44,7 +44,13 @@ Epic 전환 전 같은 프로젝트·같은 키 유지, 현재 상태와 대상 
 
 구현 Task는 `statuses.backlog`에 둔다. 생성 기본 상태가 다르면 전환 가능 여부를 확인해 백로그로 이동하고 결과를 확인한다. `statuses.ready`로 이동하지 않는다. 자식 생성 전후 Candidate ID와 `Link Key: <후보 URL>|<대상 저장소>|<작업 식별자>`로 기존 작업을 확인하고 중복을 피한다. 쓰기·유형 전환 결과가 불명확하면 원래 키의 실제 유형·작업·관계를 재조회하고 이미 성공한 단계를 반복하지 않는다. 관계 조회 실패는 미연결이 아니다.
 
-### 선택적 Confluence 기능 기획
+## Confluence 페이지 제목
+
+`backlog-refinement`, `issue-refinement`, `contract-management`에서 새 Confluence 페이지를 만들 때 제목은 `<기준 Jira 키> <문서 제목>` 형식으로 작성한다. 기능 기획 페이지의 기준 키는 기능을 묶는 Epic이 있으면 그 Epic의 키이고, 독립 단일 작업이면 해당 Task의 키다. 계약 변경 논의 페이지의 기준 키는 해당 계약 변경 Task의 키다. 예를 들어 `ASK-14 프론트엔드 인증 연동 및 로그인 상태 관리`와 같이 실제 확인한 키를 사용한다. 기준 작업이나 키를 확인할 수 없으면 추측해 생성하지 않고 해당 페이지를 보류한다. 사용자가 제목을 명시하면 그 지시를 우선한다.
+
+이 규칙은 새 페이지에 적용한다. 기존 페이지는 제목에 키가 없더라도 기존 링크·본문과 검색 결과로 확인해 재사용하며, 제목 형식만을 이유로 새 페이지를 만들거나 기존 제목을 자동 변경하지 않는다. 제목은 식별을 돕는 표시이며 Jira와 Confluence의 링크 확인을 대체하지 않는다.
+
+## 선택적 Confluence 기능 기획
 
 이 절은 `backlog-refinement`의 Jira 후보 정제에만 적용한다. 설정 대상은 공통 루트의 Specs 우선·단일 구현 대상 규칙을 따르며 다른 저장소의 설정을 합치거나 대체하지 않는다. 선택 서비스의 `confluence`가 없거나 `enabled: false`이면 Confluence를 조회·변경하지 않고 Jira 정제만 진행한다. `enabled: true`이면 비어 있지 않은 `site_url`, `space_key`, `parent_page_id`가 필요하다. `site_url`은 Confluence 사이트의 `/wiki` 기본 URL이며 `parent_page_id`는 숫자 문자열이다. `enabled` 누락·잘못된 형식이나 필수 값 누락은 Confluence 부분만 보류하고 Jira 정제 결과와 본문 초안을 보고한다. 다른 값을 추측하거나 다른 대상 설정으로 대체하지 않는다.
 
