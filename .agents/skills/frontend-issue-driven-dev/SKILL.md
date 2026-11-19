@@ -5,7 +5,7 @@ description: 선택한 Frontend 저장소에서 설정된 작업을 설계·구�
 
 # Frontend 작업
 
-공통 루트의 `AGENTS.md`, `docs/workflows/development.md`, 선택된 `docs/providers/jira.md` 또는 `docs/providers/github-projects.md`, `docs/review/shared.md`와 아래 역할별 리뷰 기준을 실행 전에 읽는다. 설정·Git·기록·테스트는 선택한 대상 루트에서 처리한다. Main은 공통 루트·대상 루트·대상 설정의 절대 경로, 역할, 확인한 공식 원본, 승인 범위·금지 작업, 검증 명령과 역할별 리뷰 기준을 Architect·Builder·Reporter에 인계한다. 한 번에 한 작업을 진행하고 공통 개발 절차의 설계·구현·리뷰·기록·머지 준비 게이트를 따른다.
+공통 루트의 `AGENTS.md`, `docs/workflows/development.md`, 선택된 `docs/providers/jira.md` 또는 `docs/providers/github-projects.md`, `docs/review/shared.md`와 아래 역할별 리뷰 기준을 실행 전에 읽는다. 설정·Git·기록·테스트는 선택한 대상 루트에서 처리한다. Main은 한 번에 한 작업의 설계 확인·구현·검증·자체 리뷰·기록과 PR 준비를 직접 수행한다. 독립 리뷰가 필요한 경우 공통 개발 절차에 따라 Architect를 호출하고 머지 준비 게이트를 확인한다.
 
 기능 후보 발굴·등록과 백로그 정제는 Orchestrator의 `feature-discovery`와 `backlog-refinement`에서 별도 요청으로 수행한다. 개발 중 확인된 기술 후속 Issue는 공통 개발 절차의 기존 권한과 제한을 따른다. 공식 계약과 운영 파일 수정 권한은 루트 규칙과 공통 개발 절차를 따른다.
 
