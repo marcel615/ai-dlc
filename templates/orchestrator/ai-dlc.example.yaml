@@ -108,6 +108,7 @@ services:
     #     in_review: 검토 중
     #     done: 완료
     #   role_labels:
+    #     specs: 'area:specs' # 생략 시에도 area:specs 사용
     #     backend: area:backend
     #     frontend: area:frontend
     #   # 사용자 승인 전환의 작성자·시각·상태 이력 확인이 가능해야 한다.
