@@ -4,6 +4,9 @@
 
 - `Example Project 백엔드 작업 시작하자`
 - `Example Project 프론트엔드 작업 시작하자`
+- `Example Project 분석 작업 시작하자`
+- `Example Project 분석 ABC-789 작업 재개해`
+- `Example Project 분석 ABC-789 작업 마무리해`
 - `Example Project 백엔드 ABC-123 작업 재개해`
 - `Example Project 프론트엔드 ABC-456 작업 마무리해`
 - `Example Project 기능 아이디어 제안해` — `feature-discovery`

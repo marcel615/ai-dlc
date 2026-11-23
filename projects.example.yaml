@@ -9,3 +9,7 @@ projects:
       specs: '<Specs 저장소 절대 경로>'
       backend: '<Backend 저장소 절대 경로>'
       frontend: '<Frontend 저장소 절대 경로>'
+  - name: Example Analytics
+    aliases: []
+    targets:
+      analytics: '<Analytics 저장소 절대 경로>'

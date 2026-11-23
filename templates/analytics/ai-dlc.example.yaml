@@ -1,0 +1,41 @@
+# 대상 저장소 루트에서 ai-dlc.yaml로 사용하기 전에 예시 값을 실제 환경과 대조한다.
+# 토큰, 비밀번호, 데이터 공급자 API 키는 설정 파일에 넣지 않는다.
+schema_version: 2
+active_service: example
+
+services:
+  example:
+    repositories:
+      analytics:
+        enabled: true
+        repository: example-user/example-analytics
+        default_branch: main
+
+    work_tracking:
+      provider: jira
+
+    jira:
+      site_url: https://example.atlassian.net
+      project_key: EXAMPLE
+      issue_types:
+        implementation: Task
+      statuses:
+        ready: 착수 가능
+        in_progress: 진행 중
+        in_review: 검토 중
+        done: 완료
+      role_labels:
+        analytics: 'area:analytics'
+      priority_order: [Highest, High, Medium, Low, Lowest]
+
+    # 작업에 적용되는 공식 원본이 있다면 repositories에 원본 저장소를 등록하고
+    # requirements 또는 contracts에 repository_role, path, format을 설정한다.
+
+    development:
+      branch_pattern: 'codex/작업키-작업명'
+      branch_prefix: 'codex/'
+      protected_branches:
+        - main
+      # 예시 명령을 대상에서 사용하는 실제 명령으로 교체한다.
+      test_command: 'python -m pytest'
+      test_command_windows: 'python -m pytest'

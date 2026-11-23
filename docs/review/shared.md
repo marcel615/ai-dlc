@@ -9,4 +9,4 @@
 - 미검증이 남아도 가능한 commit·push·PR·리뷰·devlog를 마무리하고 PR 준비와 머지 준비를 구분했는가? 권한·공식 원본·계약·요구사항 문제를 검증 보류로 우회하지 않았는가?
 - PR 대상 브랜치, 최종 head의 CI·필수 리뷰, 기록과 사용자 직접 머지 조건을 확인했는가?
 
-역할별 기준은 `docs/review/backend.md` 또는 `docs/review/frontend.md`를 함께 적용한다.
+역할별 기준은 선택한 역할에 따라 `docs/review/backend.md`, `docs/review/frontend.md`, `docs/review/analytics.md`에서 확인한다.

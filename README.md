@@ -1,20 +1,22 @@
 # AI-DLC 공통 운영 저장소
 
-프로젝트와 요청에 따라 Orchestrator, Backend, Frontend 작업을 선택하는 공통 운영 루트다. 프로젝트별 설정과 명세, 소스, 작업 기록과 상태는 각 대상 저장소에 남는다. 공통 저장소는 기존 AI-DLC 저장소의 파일이나 Skill을 실행 중에 불러오지 않는다.
+프로젝트와 요청에 따라 Orchestrator, Backend, Frontend, Analytics 작업을 선택하는 공통 운영 루트다. 프로젝트별 설정과 명세, 소스, 작업 기록과 상태는 각 대상 저장소에 남는다. 공통 저장소는 기존 AI-DLC 저장소의 파일이나 Skill을 실행 중에 불러오지 않는다.
 
 ## 프로젝트 등록과 요청
 
 1. `projects.example.yaml`을 루트의 `projects.local.yaml`로 복사한다.
 2. 사용자에게 확인된 프로젝트 이름, 별칭과 필요한 대상의 절대 경로를 입력한다. 사용하지 않는 대상은 생략할 수 있다. 비밀값을 넣지 않는다.
-3. 이 저장소를 운영 루트로 열고 프로젝트와 작업을 명시한다. 예: `Example Project 백엔드 작업 시작하자`, `Example Project 백로그 정제해`.
+3. 이 저장소를 운영 루트로 열고 프로젝트와 작업을 명시한다. 예: `Example Project 백엔드 작업 시작하자`, `Example Project 분석 작업 시작하자`, `Example Project 백로그 정제해`.
 
 로컬 등록은 Git에서 제외된다. 이름·역할·대상 경로와 원격을 확인하는 방법 및 중단 조건은 [AGENTS.md](AGENTS.md)를 따른다. 공식 명세가 필요한 작업에서는 실제 설정된 원본을 확인해야 한다.
 
 ## 새 프로젝트 설정
 
-새 프로젝트에서는 대상 역할에 맞는 `templates/orchestrator/`, `templates/backend/`, `templates/frontend/` 폴더의 `ai-dlc.example.yaml`을 대상 저장소 루트에 `ai-dlc.yaml`로 직접 복사하고 실제 환경에 맞게 수정한다. 역할별 설정 예시는 각각 독립적이며 비밀값을 넣지 않는다.
+새 프로젝트에서는 대상 역할에 맞는 `templates/orchestrator/`, `templates/backend/`, `templates/frontend/`, `templates/analytics/` 폴더의 `ai-dlc.example.yaml`을 대상 저장소 루트에 `ai-dlc.yaml`로 직접 복사하고 실제 환경에 맞게 수정한다. 역할별 설정 예시는 각각 독립적이며 비밀값을 넣지 않는다.
 
-같은 역할 폴더의 문서와 Issue·PR 양식은 필요한 경우 참고한다. 대상 저장소의 기존 설정·양식·작업 기록을 우선하며 자동으로 복사하거나 덮어쓰지 않는다. Backend와 Frontend의 작업 기록 초기 양식은 각각 해당 폴더의 `docs/current-work-log.md`에 있다.
+같은 역할 폴더의 문서와 Issue·PR 양식은 필요한 경우 참고한다. 대상 저장소의 기존 설정·양식·작업 기록을 우선하며 자동으로 복사하거나 덮어쓰지 않는다. Backend·Frontend·Analytics의 작업 기록 초기 양식은 각각 해당 폴더의 `docs/current-work-log.md`에 있다.
+
+Analytics는 데이터 수집·분석·백테스트용 선택 역할이다. `targets.analytics`만 등록한 프로젝트도 Jira 개발 작업을 진행할 수 있다. Backend나 Frontend가 소비하는 분석 인터페이스와 결과 의미는 설정된 공식 계약에 기록한다. 내부 분석 구현과 실행 기록은 Analytics 저장소에 둔다.
 
 ## 검증과 PR 준비
 
@@ -34,7 +36,8 @@ ai-dlc/
 └── templates/
     ├── orchestrator/         # Orchestrator 설정 예시와 초기 양식
     ├── backend/              # Backend 설정 예시와 초기 양식
-    └── frontend/             # Frontend 설정 예시와 초기 양식
+    ├── frontend/             # Frontend 설정 예시와 초기 양식
+    └── analytics/            # Analytics 설정 예시와 초기 양식
 ```
 
 ## 이관 기준 이력

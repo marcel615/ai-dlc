@@ -7,7 +7,7 @@
 
 먼저 공통 운영 루트의 `AGENTS.md`에 따라 프로젝트를 식별하고 대상 루트의 `ai-dlc.yaml`을 확인한다. 아이디어 제안 요청은 최대 3개 후보 등록, 백로그 정제 요청은 승인 후보 최대 2개의 정제와 필요한 작업 연결을 포함한다. 구체적인 등록·관계 처리는 선택 provider의 절차를 따른다. 정상 범위의 실행 승인을 반복 요청하지 않는다. 변경 영향 검토 요청은 분석·후속 작업 제안과 로컬 상태 갱신을 수행하며 실제 후속 작업 등록을 자동 실행하지 않는다. 사용자의 분석 전용·등록 제외·대상 제한 지시를 우선한다.
 
-통합 저장소 자체의 문서·브랜치·커밋·Push·PR 유지보수는 사용자에게 요청받은 범위에서 수행한다. 후보 승인·중요한 정책·요구사항·계약·인증·DB 결정은 사용자에게 확인하고 미결정 범위를 임의 확정하지 않는다. `ai-dlc.yaml`의 `orchestrator.default_branch`에 직접 Push하지 않으며 자동 Merge는 하지 않는다. 서비스 제품 구현은 이 저장소의 Backend·Frontend 개발 Skill에서 수행한다.
+통합 저장소 자체의 문서·브랜치·커밋·Push·PR 유지보수는 사용자에게 요청받은 범위에서 수행한다. 후보 승인·중요한 정책·요구사항·계약·인증·DB 결정은 사용자에게 확인하고 미결정 범위를 임의 확정하지 않는다. `ai-dlc.yaml`의 `orchestrator.default_branch`에 직접 Push하지 않으며 자동 Merge는 하지 않는다. 서비스 제품 구현은 이 저장소의 Backend·Frontend·Analytics 개발 Skill에서 수행한다. Analytics 역할의 Jira 개발 절차는 `analytics-issue-driven-dev`에서 다룬다.
 
 schema version 2에서 사용자 지정 서비스 키를 우선하고 없으면 `active_service`를 사용한다. 선택한 서비스의 `work_tracking.provider`가 없으면 `github_projects`다. `github_projects`는 기존 `project`, `labels`, GitHub Issue·관계 절차를 사용하고, `jira`는 독립된 `jira` 설정과 [Jira 작업 절차](../providers/jira.md)를 사용한다. 지원하지 않는 provider·버전, 필수 설정 누락·오류, 연결이나 권한 실패는 중단하고 보고하며 다른 도구로 대체하지 않는다. `repositories`, `requirements`, `contracts`는 두 경로에서 공통으로 해석한다.
 
