@@ -1,6 +1,6 @@
 ---
 name: contract-management
-description: 사용자가 직접 요청한 공식 요구사항·API·인증·ERD·UI 계약 변경을 Issue부터 협의, 영향 분석, 명세 PR과 머지 후 마무리까지 관리한다. PR 영향 검토나 제품 구현은 수행하지 않는다.
+description: 사용자가 직접 요청한 공식 요구사항과 API·인증·ERD·UI·분석 명세 등 계약 변경을 Issue부터 협의, 영향 분석, 명세 PR과 머지 후 마무리까지 관리한다. PR 영향 검토나 제품 구현은 수행하지 않는다.
 ---
 
 # 사용자 주도 공통 계약 관리
@@ -22,11 +22,11 @@ description: 사용자가 직접 요청한 공식 요구사항·API·인증·ERD
 
 계약 작업을 확인하고 협의·영향 분석을 시작하면 [계약 작업 상태 절차](../../../docs/workflows/orchestrator.md#계약-작업-상태와-머지-후-마무리)에 따라 진행 중으로 전환한다.
 
-요구사항·API·인증·ERD·UI 간 일관성과 필요한 Backend·Frontend 소비자별 영향을 분석한다. 호환성, 기존 데이터·마이그레이션, 보안, 오류·경계 조건, 배포 순서·전환 기간·복구를 관련 범위에서 검토한다. 영향 없음에는 근거를 남기고 미연결·조회 실패는 보류로 구분한다. 관련 작업과 계약 변경 작업을 상호 참조로 연결하되 선택 provider의 기존 관계를 유지한다. `github_projects`에서는 계약 Issue를 임의로 공식 Sub-issue로 추가하거나 URL을 공식 관계로 주장하지 않는다. 각 관련 작업에 영향·이유·재상세화 필요/불필요/판정 보류와 기준 SHA를 기록한다. 사용자 요청 범위 밖 수정은 하지 않는다.
+공식 요구사항과 관련 계약의 일관성을 확인하고 Backend·Frontend·Analytics 중 영향을 받는 구현 역할과 소비자를 분석한다. 호환성, 기존 데이터·마이그레이션, 보안, 오류·경계 조건, 배포 순서·전환 기간·복구를 관련 범위에서 검토한다. 영향 없음에는 근거를 남기고 미연결·조회 실패는 보류로 구분한다. 관련 작업과 계약 변경 작업을 상호 참조로 연결하되 선택 provider의 기존 관계를 유지한다. `github_projects`에서는 계약 Issue를 임의로 공식 Sub-issue로 추가하거나 URL을 공식 관계로 주장하지 않는다. 각 관련 작업에 영향·이유·재상세화 필요/불필요/판정 보류와 기준 SHA를 기록한다. 사용자 요청 범위 밖 수정은 하지 않는다.
 
 계약 변경 방향과 구현 영향이 충분히 명확해지면 명세 PR 전에 필요한 구현 작업을 준비한다. 기존 열린 작업의 목적·범위를 확인해 맞는 작업을 재사용하고, 꼭 필요하지만 빠진 작업만 선택 provider에 생성·연결한다. 변경안·사용자 결정과 아직 공식이 아닌 상태, 영향·선행 조건·기존 공식 기준 SHA를 구분해 기록한다. 생성은 명세 수정 승인이나 개발 착수가 아니다. 실제 Merge 후 공식 SHA를 확인해 영향 작업의 기준과 재상세화 필요성을 갱신한다. 대상·중복·필요성·관계가 불명확하면 해당 범위를 보류한다.
 
-`jira`의 신규 구현 Task에는 `docs/providers/jira.md`의 구현 유형·역할 라벨·초기 백로그 상태·중복 확인 규칙을 적용한다. `jira.issue_types.implementation`으로 생성하고 Backend에는 `jira.role_labels.backend`, Frontend에는 `jira.role_labels.frontend`를 붙이며 `jira.statuses.backlog`에 둔 뒤 실제 결과를 확인한다. 기존 Task를 재사용할 때는 진행 상태를 되돌리지 않고 `jira.statuses.ready` 전환은 사용자에게 남긴다. 이 규칙은 후보 승인 절차나 `backlog-refinement` 실행을 요구하지 않는다.
+`jira`의 신규 구현 Task에는 `docs/providers/jira.md`의 구현 유형·역할 라벨·초기 백로그 상태·중복 확인 규칙을 적용한다. `jira.issue_types.implementation`으로 생성하고 해당 구현 역할의 `jira.role_labels` 값을 붙이며 `jira.statuses.backlog`에 둔 뒤 실제 결과를 확인한다. 기존 Task를 재사용할 때는 진행 상태를 되돌리지 않고 `jira.statuses.ready` 전환은 사용자에게 남긴다. 이 규칙은 후보 승인 절차나 `backlog-refinement` 실행을 요구하지 않는다.
 
 ## 협의·승인과 명세 PR
 
