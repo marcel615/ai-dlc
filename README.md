@@ -16,7 +16,9 @@
 
 같은 역할 폴더의 문서와 Issue·PR 양식은 필요한 경우 참고한다. 대상 저장소의 기존 설정·양식·작업 기록을 우선하며 자동으로 복사하거나 덮어쓰지 않는다. Backend·Frontend·Analytics의 작업 기록 초기 양식은 각각 해당 폴더의 `docs/current-work-log.md`에 있다.
 
-Analytics는 데이터 수집·전처리·분석·리포팅·모델 평가 등에 사용하는 선택 역할이다. `targets.analytics`만 등록한 프로젝트에서도 설정된 Jira 또는 GitHub Projects로 개발 작업을 진행할 수 있다. 개별 역할만 사용하는 프로젝트는 등록 예시에서 필요한 대상만 남긴다. Backend나 Frontend가 소비하는 분석 인터페이스와 결과 의미는 설정된 공식 계약에 기록한다. 내부 분석 구현, 실행 환경, 데이터 검증 기준과 작업 기록은 Analytics 저장소에 둔다.
+Analytics는 데이터 수집·전처리·분석·리포팅·모델 평가 등에 사용하는 선택 역할이다. `targets.analytics`만 등록한 프로젝트에서도 설정된 Jira 또는 GitHub Projects로 후보 발굴·정제·상세화와 개발을 진행할 수 있다. 개별 역할만 사용하는 프로젝트는 등록 예시에서 필요한 대상만 남긴다. Backend나 Frontend가 소비하는 분석 인터페이스와 결과 의미는 설정된 공식 계약에 기록한다. 내부 분석 구현, 실행 환경, 데이터 검증 기준과 작업 기록은 Analytics 저장소에 둔다.
+
+Specs를 함께 운영하는 프로젝트에서 Analytics 작업을 계획한다면 Specs 설정의 `repositories.analytics`를 실제 Analytics 저장소에 연결한다. Jira에서는 그 설정과 Analytics 개발 설정의 `jira.role_labels.analytics`를 일치시킨다. GitHub Projects에서 공통 Parent/Sub-issue를 사용하면 구현 저장소 역할 목록에 `analytics`를 추가한다.
 
 ## 검증과 PR 준비
 
