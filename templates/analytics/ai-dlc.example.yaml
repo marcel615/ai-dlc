@@ -100,6 +100,10 @@ services:
     #     repository_role: common
     #     path: docs/openapi.yaml
     #     format: openapi
+    #   analytics:
+    #     repository_role: common
+    #     path: docs/analytics-spec.md
+    #     format: markdown
 
     # [확인 필요] 작업 브랜치 규칙과 대상 저장소의 실제 검증 명령
     development:
