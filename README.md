@@ -10,7 +10,7 @@
 
 로컬 등록은 Git에서 제외된다. 이름·역할·대상 경로와 원격을 확인하는 방법 및 중단 조건은 [AGENTS.md](AGENTS.md)를 따른다. 공식 명세가 필요한 작업에서는 실제 설정된 원본을 확인해야 한다.
 
-`Example Project 사이클 시작`, `Example Project 사이클 3회 시작`, `Example Project 사이클 재개`로 후보 하나씩 정제·상세화·구현·마무리까지 진행할 수 있다. 회차에 연결된 PR의 머지와 환경 변수 대기·재개 기준은 [프로젝트 사이클 절차](docs/workflows/project-cycle.md)를 따른다.
+`Example Project 사이클 시작`, `Example Project 사이클 3회 시작`, `Example Project 사이클 재개`로 후보 하나씩 정제·상세화·구현·마무리까지 진행할 수 있다. 시작 요청에는 회차에 연결된 Specs·구현 PR의 머지 승인이 포함된다. 필수 검증과 저장소 보호 조건을 충족하고 실행 환경이 허용하면 추가 채팅 확인 없이 머지한다. [프로젝트 사이클 절차](docs/workflows/project-cycle.md)
 
 ## 새 프로젝트 설정
 
