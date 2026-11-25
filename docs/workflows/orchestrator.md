@@ -57,6 +57,8 @@ CLI 인증이 실패하면 곧바로 재인증을 요구하지 않는다. 연결
 
 `discussion-log`는 사용자가 현재 대화의 프로젝트 논의를 기록해 달라고 요청할 때 독립 실행한다. `AGENTS.md`에 따라 선택한 설정의 schema version 2 서비스에서 `confluence`를 해석한다. 이 작업에는 Confluence 설정과 기록 대상 대화가 필요하며 `work_tracking.provider`와 관계없이 [프로젝트 논의 기록 절차](../providers/jira.md#프로젝트-논의-기록)를 적용한다. 설정·대상·쓰기 권한을 확인할 수 없으면 간결한 초안과 보류 사유를 보고한다.
 
+[공통 개발 마무리](development.md#개발-중-발견한-개선점-기록)에서 선별한 개선점을 기록할 때도 같은 Confluence 기록 절차를 사용한다.
+
 ## GitHub Projects 후보 제안·정제
 
 이 절과 다음 `식별자·공식 관계·부분 실패` 절은 `github_projects` 전용이다. Jira의 후보 선정, 관계 및 재개 절차는 `docs/providers/jira.md`를 따른다.
