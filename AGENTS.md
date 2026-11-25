@@ -19,10 +19,11 @@ YAML 파서가 기본 경로에 없으면 이미 설치된 도구를 먼저 확�
 | 기능 아이디어 제안 | Orchestrator / `feature-discovery` | 아래 기준으로 선택한 대상의 설정과 필요한 활성 영역 |
 | 백로그 정제 | Orchestrator / `backlog-refinement` | 아래 기준으로 선택한 대상의 설정과 필요한 활성 영역 |
 | 기존 작업 상세화 | Orchestrator / `issue-refinement` | 아래 기준으로 선택한 대상의 설정과 필요한 활성 영역 |
+| 프로젝트 논의를 Confluence에 기록 | Orchestrator / `discussion-log` | 아래 기준으로 선택한 대상의 Confluence 설정 |
 | 공식 계약 변경 관리 | Orchestrator / `contract-management` | 설정된 공식 명세 원본 |
 | 지정 PR·계약의 변경 영향 검토 | Orchestrator / `change-impact-review` | 설정된 Specs 및 필요한 관련 저장소 |
 
-후보 발굴·백로그 정제·기존 작업 상세화에서는 `targets.specs`가 등록돼 있으면 Specs 루트의 `ai-dlc.yaml`을 사용한다. Specs가 등록되지 않고 구현 대상(`targets.backend`, `targets.frontend`, `targets.analytics`)이 하나만 등록돼 있으면 그 대상 루트의 `ai-dlc.yaml`을 사용한다. Specs 없이 구현 대상이 둘 이상 등록돼 있거나 설정 대상이 그 밖의 이유로 모호하면 추측하지 말고 사용자에게 확인한다. 선택한 설정을 읽거나 확인할 수 없을 때 다른 대상의 설정으로 임의 대체하지 않는다. 작업에 공식 명세가 필요하면 선택한 설정에서 지정한 공식 원본을 확인한다.
+후보 발굴·백로그 정제·기존 작업 상세화·프로젝트 논의 기록에서는 `targets.specs`가 등록돼 있으면 Specs 루트의 `ai-dlc.yaml`을 사용한다. Specs가 등록되지 않고 구현 대상(`targets.backend`, `targets.frontend`, `targets.analytics`)이 하나만 등록돼 있으면 그 대상 루트의 `ai-dlc.yaml`을 사용한다. Specs 없이 구현 대상이 둘 이상 등록돼 있거나 설정 대상이 그 밖의 이유로 모호하면 추측하지 말고 사용자에게 확인한다. 선택한 설정을 읽거나 확인할 수 없을 때 다른 대상의 설정으로 임의 대체하지 않는다. 작업에 공식 명세가 필요하면 선택한 설정에서 지정한 공식 원본을 확인한다.
 
 구현 작업의 담당 역할은 작업 범위와 선택한 서비스의 활성 저장소 설정으로 확인한다.
 
