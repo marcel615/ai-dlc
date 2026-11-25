@@ -15,5 +15,7 @@
 - `Example Project 오늘 논의한 내용 기록해 줘` — `discussion-log`
 - `Example Project 공식 API 계약 변경을 관리해` — `contract-management`
 - `Example Project 이 PR의 변경 영향을 검토해` — `change-impact-review`
+- `Example Project 사이클 시작` 또는 `Example Project 사이클 3회 시작` — `project-cycle`
+- `Example Project 사이클 재개` — 저장된 회차와 실제 작업 상태를 대조해 남은 단계 진행
 
-마무리는 실제 PR 머지를 확인한 뒤 해당 작업만 완료한다. 계약 변경과 PR 머지는 사용자 결정에 따른다.
+마무리는 실제 PR 머지를 확인한 뒤 해당 작업만 완료한다. 사이클의 권한 위임 범위와 머지 조건은 [프로젝트 사이클 절차](../workflows/project-cycle.md)를 따른다.
