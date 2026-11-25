@@ -12,6 +12,7 @@
 - `Example Project 기능 아이디어 제안해` — `feature-discovery`
 - `Example Project 백로그 정제해` — `backlog-refinement`
 - `Example Project ABC-123 작업 상세화해` — `issue-refinement`
+- `Example Project 오늘 논의한 내용 기록해 줘` — `discussion-log`
 - `Example Project 공식 API 계약 변경을 관리해` — `contract-management`
 - `Example Project 이 PR의 변경 영향을 검토해` — `change-impact-review`
 
