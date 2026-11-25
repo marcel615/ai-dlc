@@ -67,6 +67,10 @@ services:
     work_tracking:
       provider: github_projects
 
+    # 선택 사항. 사용자 위임을 확인한 머지 대상 역할만 등록한다.
+    # cycle:
+    #   merge_roles: [backend, frontend]
+
     # 선택 사항: 기능 기획·계약 변경 협의·프로젝트 논의 기록의 Confluence 연결
     # confluence:
     #   enabled: true
