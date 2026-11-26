@@ -19,6 +19,9 @@
 단계 진입 시 공통 루트의 해당 Skill과 그 Skill에서 요구하는 provider·리뷰 기준을 읽는다. 상세 절차는 기존 Skill을 따른다. 아래 단계 연결 및 위임 범위를 독립 실행의 종료·직접 승인 지점에 적용한다. 후보나 공식 계약의 상태 전환은 선택 provider에서 지원하는 방식으로 수행하고 실제 이력과 결과를 확인한다.
 
 1. **후보 발굴·선정**. 현재 회차를 재개할 때는 저장된 후보 ID와 기존 작업 관계를 대조해 부분 완료 결과를 재사용한다. 신규 회차는 적합한 기존 승인 후보를 먼저 검토하고, 없으면 기존 승인 대기 후보를 검토한다. GitHub Projects의 Pending 필드나 Jira의 후보 상태와 이력을 확인하고 사용자가 보류·거절한 후보, 상태·이력이 불분명한 후보, 이미 정제됐거나 완료 회차에 사용된 후보는 제외한다. 승인 대기 후보가 적합하면 하나만 위임 범위에서 승인하고 실제 상태·이력을 확인한다. 두 기존 후보군을 확인한 결과 적합한 항목이 없을 때 [`feature-discovery`](../../.agents/skills/feature-discovery/SKILL.md)로 중복이 없고 공식 요구사항에 맞는 후보를 발굴한다. 사이클에서는 채택할 후보 하나까지만 등록하고 실제 승인을 확인한다. 조회 실패로 기존 후보군을 확인할 수 없으면 신규 등록을 보류한다.
+
+   신규 회차의 후보 검토를 시작할 때 [공통 논의 조회 절차](orchestrator.md#후보-검토-시-프로젝트-논의-조회)를 따른다.
+
 2. **백로그 정제와 상세화**. 선정 후보 ID나 해당 작업 키 하나로 범위를 한정해 [`backlog-refinement`](../../.agents/skills/backlog-refinement/SKILL.md)를 실행한다. 추가 후보를 선정하지 않는다. 실제 Parent·구현 작업의 생성/재사용 및 관계를 확인하고 [`issue-refinement`](../../.agents/skills/issue-refinement/SKILL.md)로 범위·수용 조건·선행 조건을 확정한다. 일상적인 결정을 위임 근거와 함께 기록한다. 실제 착수 가능 상태 전환은 영향받는 구현 작업의 미결 사항과 필수 선행 조건이 해결된 뒤에만 한다.
 3. **계약 변경**. 기존 공식 계약으로 구현할 수 있으면 건너뛴다. 변경이 필요하면 연결된 변경 작업을 확인하고 위임된 범위에서 변경안과 소비자 영향을 기록한 뒤 [`contract-management`](../../.agents/skills/contract-management/SKILL.md)로 Specs PR을 준비한다. 준비된 Specs PR에 5단계의 머지·마무리를 적용한다. 실제 머지와 공식 원본 SHA, 관련 작업의 마무리 결과를 확인한 뒤 `issue-refinement`로 영향받은 작업을 재상세화한다. 공식 변경에 의존하는 구현은 해당 조건이 해소된 뒤 시작한다.
 4. **구현·검증**. 해당 회차에 연결된 구현 작업 키를 지정해 [`backend-issue-driven-dev`](../../.agents/skills/backend-issue-driven-dev/SKILL.md), [`frontend-issue-driven-dev`](../../.agents/skills/frontend-issue-driven-dev/SKILL.md), [`analytics-issue-driven-dev`](../../.agents/skills/analytics-issue-driven-dev/SKILL.md) 중 해당 역할만 실행한다. 선행 관계 순서, 대상별 기존 작업과 브랜치, 필수 리뷰 및 테스트 규칙을 따른다. 후속 작업의 선행 조건 해제에 머지가 필요하면 준비된 PR에 5단계를 적용한다. 구현 중 계약 변경이 드러나면 영향받는 작업을 저장하고 3단계로 돌아간다. 독립 작업은 대상별 기존 작업 제한 안에서 진행한다.
