@@ -1,6 +1,6 @@
 ---
 name: frontend-issue-driven-dev
-description: 모노레포의 Frontend 영역에서 설정된 작업을 설계·구현·검증하고 PR과 기록을 준비한다.
+description: 프로젝트의 Frontend 영역에서 설정된 작업을 설계·구현·검증하고 PR과 기록을 준비한다.
 ---
 
 # Frontend 작업

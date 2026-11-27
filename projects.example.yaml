@@ -3,4 +3,4 @@ projects:
   - name: Example Project
     aliases:
       - Example
-    root: '<모노레포 Git 루트의 절대 경로>'
+    root: '<프로젝트 Git 루트의 절대 경로>'
