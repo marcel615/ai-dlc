@@ -25,7 +25,7 @@
 
 ## 공식 설계·API·UI
 
-공식 원본: `ai-dlc.yaml`의 활성 서비스 `requirements`, `contracts.api`, `contracts.authentication`(설정된 경우), `contracts.erd`, `contracts.ui`와 각각의 `repository_role`.
+공식 원본: `ai-dlc.yaml`의 루트 설정 `requirements`, `contracts.api`, `contracts.authentication`(설정된 경우), `contracts.erd`, `contracts.ui`가 지정한 Specs의 경로.
 
 - [ ] 변경한 기능·화면 동작·라우트가 공식 요구사항/UI 및 승인된 Issue와 일치하는가?
 - [ ] Method·URL·Payload·응답·인증/권한이 API 계약과 일치하는가?
@@ -33,7 +33,7 @@
 - [ ] ERD 식별자·관계와 API/UI 타입을 혼동하지 않는가?
 - [ ] 기존 응답 처리와 타입을 공식 계약으로 가정하지 않고 불일치를 보고했는가?
 - [ ] 공식 계약을 읽기 전용으로 참조했는가? 변경 필요 시 기존 계약에 맞는 대안을 검토하고 Main이 사유·영향·수정안을 사용자에게 보고했는가?
-- [ ] `github_projects`에서는 관련 Issue·PR에 계약 변경 필요성과 검토 근거를 기존 수정 승인 조건에 따라 기록했는가? `jira`에서는 Task 본문·댓글 수정 없이 로컬 작업 로그에 기록하고 사용자에게 보고했는가? 계약 변경에 의존하는 부분은 공식 원본 반영 확인과 설계 게이트 재판단 전까지 보류했는가?
+- [ ] 계약 변경 필요성과 근거를 루트 작업 로그에 기록하고 공식 반영 및 재검증 전까지 관련 범위를 보류했는가?
 - [ ] API 오류 메시지와 응답이 없을 때의 기본 메시지를 처리하는가?
 - [ ] API 함수·사용 위치·키·무효화 정책이 실제 코드와 공식 계약에 일치하는가?
 
@@ -56,7 +56,6 @@
 - [ ] 테스트 계정·API 대상·파일이 개발/운영 데이터와 격리되고 실행 순서나 고정 기존 데이터에 의존하지 않는가?
 - [ ] 관련 화면은 Backend와 개발 서버를 실행해 Network Payload/Response·Console을 확인했는가?
 - [ ] 검증 결과와 미실행·해당 없음의 이유를 구분하고 기존 버그/명세 충돌을 숨기지 않았는가?
-- [ ] 해당 작업 devlog가 append-only로 반영됐는가?
 - [ ] 최종 head의 필수 CI·외부 리뷰·보호조건·충돌을 다시 확인했는가?
 
 ## 리뷰 결과
