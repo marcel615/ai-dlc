@@ -1,14 +1,12 @@
 # 빠른 요청 예시
 
-프로젝트 이름은 `projects.local.yaml`의 등록 이름 또는 별칭을 사용한다. 대상이 모호하면 역할이나 작업 키를 명시한다.
+프로젝트 이름은 `projects.local.yaml`의 등록 이름 또는 별칭을 사용합니다. 개발 영역은 작업의 완료 조건과 공식 명세·코드를 대조해 판단합니다.
 
-- `Example Project 백엔드 작업 시작하자`
-- `Example Project 프론트엔드 작업 시작하자`
-- `Example Project 분석 작업 시작하자`
-- `Example Project 분석 ABC-789 작업 재개해`
-- `Example Project 분석 ABC-789 작업 마무리해`
-- `Example Project 백엔드 ABC-123 작업 재개해`
-- `Example Project 프론트엔드 ABC-456 작업 마무리해`
+- `Example Project ABC-123 작업 시작하자`
+- `Example Project 작업 시작하자` — 착수 가능한 Task를 기존 우선순위로 선정
+- `Example Project ABC-123 작업 재개해`
+- `Example Project ABC-123 작업 마무리해`
+
 - `Example Project 기능 아이디어 제안해` — `feature-discovery`
 - `Example Project 백로그 정제해` — `backlog-refinement`
 - `Example Project ABC-123 작업 상세화해` — `issue-refinement`
