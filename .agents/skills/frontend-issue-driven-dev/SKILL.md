@@ -1,11 +1,11 @@
 ---
 name: frontend-issue-driven-dev
-description: 프로젝트의 Frontend 영역에서 설정된 작업을 설계·구현·검증하고 PR과 기록을 준비한다.
+description: Jira Task에 필요한 Frontend 설계·구현·검증 및 리뷰 기준을 제공한다.
 ---
 
 # Frontend 작업
 
-공통 루트의 `AGENTS.md`, `docs/workflows/development.md`, `docs/providers/jira.md`, `docs/review/shared.md`와 아래 역할별 리뷰 기준을 실행 전에 읽는다. Git·설정·기록은 프로젝트 루트에서 확인하고 검증은 영역 경로에서 실행한다. Main은 한 번에 한 작업의 설계 확인·구현·검증·자체 리뷰·기록과 PR 준비를 직접 수행한다. 독립 리뷰가 필요한 경우 공통 개발 절차에 따라 Architect를 호출하고 머지 준비 게이트를 확인한다.
+공통 루트의 `AGENTS.md`, `docs/workflows/development.md`, `docs/providers/jira.md`, `docs/review/shared.md`와 아래 역할별 리뷰 기준을 실행 전에 읽는다. Git·설정·기록은 프로젝트 루트에서 확인하고 검증은 영역 경로에서 실행한다. 공통 개발 절차가 확인한 Jira Task의 변경 범위에 이 기준을 적용한다. Main이 해당 Task의 한 브랜치와 PR에서 구현·검증·기록을 관리한다.
 
 기능 후보 발굴·등록과 백로그 정제는 Orchestrator의 `feature-discovery`와 `backlog-refinement`에서 별도 요청으로 수행한다. 개발 중 확인된 기술 후속 Issue는 공통 개발 절차의 기존 권한과 제한을 따른다. 공식 계약과 운영 파일 수정 권한은 루트 규칙과 공통 개발 절차를 따른다.
 
